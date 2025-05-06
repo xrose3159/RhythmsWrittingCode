@@ -63,14 +63,6 @@
     └── 训练与评估框架
 ```
 
-## 技术栈
-
-- **前端**：React, TypeScript, Three.js
-- **后端**：Python, FastAPI, TensorFlow
-- **模型**：GAN, Transformer架构
-- **数据库**：MongoDB, Redis
-- **云服务**：阿里云ECS, OSS
-
 ## 项目成果
 
 通过对比实验验证，本系统在以下方面取得显著成果：
@@ -83,14 +75,6 @@
 <div align="center">
   <img src="https://github.com/xrose3159/RhythmsWritting/raw/gh-pages/images/innovation5.png" alt="成果展示" width="600"/>
 </div>
-
-## 团队成员
-
-- **李明** - 项目负责人 - AI模型开发
-- **张华** - 前端开发 - 用户界面设计
-- **王芳** - 后端开发 - 系统架构设计
-- **赵强** - 数据分析 - 算法优化
-
 ## 致谢
 
 感谢所有对本项目提供支持和帮助的老师、同学和机构。特别感谢中国大学生计算机设计大赛组委会提供的展示平台。
