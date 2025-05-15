@@ -1,0 +1,530 @@
+2023-03-08 09:12:41,911 - train.py[line:151] - INFO: Namespace(T_max=100, batch_size=128, checkpoint='/root/autodl-tmp/font_classification/result/resnet18_checkpoints/best.pth', data_dir='/root/autodl-tmp/font_classification/dataset', epochs=200, lr=0.001, net='resnet18', num_class=6, resume=False, save_dir='/root/autodl-tmp/font_classification/result', save_freq=10)
+2023-03-08 09:12:41,911 - train.py[line:152] - INFO: Use cuda:0 for training
+2023-03-08 09:12:41,911 - train.py[line:156] - INFO: ==> Preparing data..
+2023-03-08 09:12:44,106 - train.py[line:177] - INFO: train data: 55840
+2023-03-08 09:12:44,106 - train.py[line:178] - INFO: train: 44672, validation: 11168
+2023-03-08 09:12:44,106 - train.py[line:179] - INFO: testdata: 13960
+2023-03-08 09:12:44,107 - train.py[line:191] - INFO: ==> Building model..
+2023-03-08 09:12:46,043 - train.py[line:205] - INFO: ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=512, out_features=6, bias=True)
+)
+2023-03-08 09:12:46,044 - train.py[line:222] - INFO: => no checkpoint found at '/root/autodl-tmp/font_classification/result/resnet18_checkpoints/best.pth'
+2023-03-08 09:13:33,001 - train.py[line:64] - INFO: [INFO] Epoch_1: Train: Loss: 1.2264, Train Accuracy: 0.4123
+2023-03-08 09:13:39,461 - train.py[line:87] - INFO: Epoch_1: Eval Accurancy: 0.313
+2023-03-08 09:13:39,461 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:14:25,041 - train.py[line:64] - INFO: [INFO] Epoch_2: Train: Loss: 1.2827, Train Accuracy: 0.4733
+2023-03-08 09:14:31,626 - train.py[line:87] - INFO: Epoch_2: Eval Accurancy: 0.409
+2023-03-08 09:14:31,627 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:15:16,849 - train.py[line:64] - INFO: [INFO] Epoch_3: Train: Loss: 1.1044, Train Accuracy: 0.5056
+2023-03-08 09:15:23,486 - train.py[line:87] - INFO: Epoch_3: Eval Accurancy: 0.509
+2023-03-08 09:15:23,486 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:16:08,736 - train.py[line:64] - INFO: [INFO] Epoch_4: Train: Loss: 1.1875, Train Accuracy: 0.5384
+2023-03-08 09:16:15,262 - train.py[line:87] - INFO: Epoch_4: Eval Accurancy: 0.316
+2023-03-08 09:17:00,377 - train.py[line:64] - INFO: [INFO] Epoch_5: Train: Loss: 1.0002, Train Accuracy: 0.5711
+2023-03-08 09:17:06,939 - train.py[line:87] - INFO: Epoch_5: Eval Accurancy: 0.540
+2023-03-08 09:17:06,939 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:17:52,301 - train.py[line:64] - INFO: [INFO] Epoch_6: Train: Loss: 1.0124, Train Accuracy: 0.5954
+2023-03-08 09:17:58,837 - train.py[line:87] - INFO: Epoch_6: Eval Accurancy: 0.509
+2023-03-08 09:18:44,070 - train.py[line:64] - INFO: [INFO] Epoch_7: Train: Loss: 0.9297, Train Accuracy: 0.6133
+2023-03-08 09:18:50,604 - train.py[line:87] - INFO: Epoch_7: Eval Accurancy: 0.458
+2023-03-08 09:19:36,106 - train.py[line:64] - INFO: [INFO] Epoch_8: Train: Loss: 0.9708, Train Accuracy: 0.6291
+2023-03-08 09:19:42,654 - train.py[line:87] - INFO: Epoch_8: Eval Accurancy: 0.594
+2023-03-08 09:19:42,654 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:20:27,876 - train.py[line:64] - INFO: [INFO] Epoch_9: Train: Loss: 0.7704, Train Accuracy: 0.6417
+2023-03-08 09:20:34,454 - train.py[line:87] - INFO: Epoch_9: Eval Accurancy: 0.589
+2023-03-08 09:21:19,798 - train.py[line:64] - INFO: [INFO] Epoch_10: Train: Loss: 0.8691, Train Accuracy: 0.6515
+2023-03-08 09:21:26,416 - train.py[line:87] - INFO: Epoch_10: Eval Accurancy: 0.390
+2023-03-08 09:22:11,933 - train.py[line:64] - INFO: [INFO] Epoch_11: Train: Loss: 0.8848, Train Accuracy: 0.6659
+2023-03-08 09:22:18,422 - train.py[line:87] - INFO: Epoch_11: Eval Accurancy: 0.593
+2023-03-08 09:23:03,600 - train.py[line:64] - INFO: [INFO] Epoch_12: Train: Loss: 0.7402, Train Accuracy: 0.6741
+2023-03-08 09:23:10,193 - train.py[line:87] - INFO: Epoch_12: Eval Accurancy: 0.520
+2023-03-08 09:23:55,355 - train.py[line:64] - INFO: [INFO] Epoch_13: Train: Loss: 0.7336, Train Accuracy: 0.6794
+2023-03-08 09:24:01,874 - train.py[line:87] - INFO: Epoch_13: Eval Accurancy: 0.655
+2023-03-08 09:24:01,874 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:24:47,277 - train.py[line:64] - INFO: [INFO] Epoch_14: Train: Loss: 0.9008, Train Accuracy: 0.6906
+2023-03-08 09:24:53,932 - train.py[line:87] - INFO: Epoch_14: Eval Accurancy: 0.503
+2023-03-08 09:25:39,134 - train.py[line:64] - INFO: [INFO] Epoch_15: Train: Loss: 0.7975, Train Accuracy: 0.6935
+2023-03-08 09:25:45,661 - train.py[line:87] - INFO: Epoch_15: Eval Accurancy: 0.682
+2023-03-08 09:25:45,662 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:26:30,982 - train.py[line:64] - INFO: [INFO] Epoch_16: Train: Loss: 0.8038, Train Accuracy: 0.6979
+2023-03-08 09:26:37,556 - train.py[line:87] - INFO: Epoch_16: Eval Accurancy: 0.628
+2023-03-08 09:27:22,843 - train.py[line:64] - INFO: [INFO] Epoch_17: Train: Loss: 0.8087, Train Accuracy: 0.7073
+2023-03-08 09:27:29,426 - train.py[line:87] - INFO: Epoch_17: Eval Accurancy: 0.652
+2023-03-08 09:28:14,794 - train.py[line:64] - INFO: [INFO] Epoch_18: Train: Loss: 0.6520, Train Accuracy: 0.7126
+2023-03-08 09:28:21,320 - train.py[line:87] - INFO: Epoch_18: Eval Accurancy: 0.475
+2023-03-08 09:29:06,838 - train.py[line:64] - INFO: [INFO] Epoch_19: Train: Loss: 0.7376, Train Accuracy: 0.7195
+2023-03-08 09:29:13,450 - train.py[line:87] - INFO: Epoch_19: Eval Accurancy: 0.664
+2023-03-08 09:29:58,630 - train.py[line:64] - INFO: [INFO] Epoch_20: Train: Loss: 0.6997, Train Accuracy: 0.7194
+2023-03-08 09:30:05,152 - train.py[line:87] - INFO: Epoch_20: Eval Accurancy: 0.643
+2023-03-08 09:30:50,292 - train.py[line:64] - INFO: [INFO] Epoch_21: Train: Loss: 0.6623, Train Accuracy: 0.7226
+2023-03-08 09:30:56,844 - train.py[line:87] - INFO: Epoch_21: Eval Accurancy: 0.713
+2023-03-08 09:30:56,845 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:31:43,136 - train.py[line:64] - INFO: [INFO] Epoch_22: Train: Loss: 0.6971, Train Accuracy: 0.7290
+2023-03-08 09:31:49,821 - train.py[line:87] - INFO: Epoch_22: Eval Accurancy: 0.658
+2023-03-08 09:32:34,851 - train.py[line:64] - INFO: [INFO] Epoch_23: Train: Loss: 0.7137, Train Accuracy: 0.7305
+2023-03-08 09:32:41,398 - train.py[line:87] - INFO: Epoch_23: Eval Accurancy: 0.636
+2023-03-08 09:33:26,581 - train.py[line:64] - INFO: [INFO] Epoch_24: Train: Loss: 0.6037, Train Accuracy: 0.7366
+2023-03-08 09:33:33,164 - train.py[line:87] - INFO: Epoch_24: Eval Accurancy: 0.721
+2023-03-08 09:33:33,164 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:34:18,326 - train.py[line:64] - INFO: [INFO] Epoch_25: Train: Loss: 0.6907, Train Accuracy: 0.7389
+2023-03-08 09:34:24,791 - train.py[line:87] - INFO: Epoch_25: Eval Accurancy: 0.647
+2023-03-08 09:35:10,109 - train.py[line:64] - INFO: [INFO] Epoch_26: Train: Loss: 0.6364, Train Accuracy: 0.7450
+2023-03-08 09:35:16,647 - train.py[line:87] - INFO: Epoch_26: Eval Accurancy: 0.691
+2023-03-08 09:36:01,642 - train.py[line:64] - INFO: [INFO] Epoch_27: Train: Loss: 0.6378, Train Accuracy: 0.7498
+2023-03-08 09:36:08,162 - train.py[line:87] - INFO: Epoch_27: Eval Accurancy: 0.491
+2023-03-08 09:36:53,938 - train.py[line:64] - INFO: [INFO] Epoch_28: Train: Loss: 0.5249, Train Accuracy: 0.7502
+2023-03-08 09:37:00,527 - train.py[line:87] - INFO: Epoch_28: Eval Accurancy: 0.741
+2023-03-08 09:37:00,528 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:37:45,799 - train.py[line:64] - INFO: [INFO] Epoch_29: Train: Loss: 0.6171, Train Accuracy: 0.7543
+2023-03-08 09:37:52,118 - train.py[line:87] - INFO: Epoch_29: Eval Accurancy: 0.376
+2023-03-08 09:38:36,231 - train.py[line:64] - INFO: [INFO] Epoch_30: Train: Loss: 0.6072, Train Accuracy: 0.7562
+2023-03-08 09:38:42,602 - train.py[line:87] - INFO: Epoch_30: Eval Accurancy: 0.683
+2023-03-08 09:39:27,043 - train.py[line:64] - INFO: [INFO] Epoch_31: Train: Loss: 0.7767, Train Accuracy: 0.7588
+2023-03-08 09:39:33,406 - train.py[line:87] - INFO: Epoch_31: Eval Accurancy: 0.404
+2023-03-08 09:40:18,373 - train.py[line:64] - INFO: [INFO] Epoch_32: Train: Loss: 0.5392, Train Accuracy: 0.7615
+2023-03-08 09:40:24,920 - train.py[line:87] - INFO: Epoch_32: Eval Accurancy: 0.444
+2023-03-08 09:41:09,905 - train.py[line:64] - INFO: [INFO] Epoch_33: Train: Loss: 0.5832, Train Accuracy: 0.7652
+2023-03-08 09:41:16,350 - train.py[line:87] - INFO: Epoch_33: Eval Accurancy: 0.694
+2023-03-08 09:42:01,443 - train.py[line:64] - INFO: [INFO] Epoch_34: Train: Loss: 0.5791, Train Accuracy: 0.7682
+2023-03-08 09:42:07,928 - train.py[line:87] - INFO: Epoch_34: Eval Accurancy: 0.747
+2023-03-08 09:42:07,928 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:42:52,805 - train.py[line:64] - INFO: [INFO] Epoch_35: Train: Loss: 0.5924, Train Accuracy: 0.7708
+2023-03-08 09:42:59,200 - train.py[line:87] - INFO: Epoch_35: Eval Accurancy: 0.731
+2023-03-08 09:43:44,108 - train.py[line:64] - INFO: [INFO] Epoch_36: Train: Loss: 0.5670, Train Accuracy: 0.7733
+2023-03-08 09:43:50,546 - train.py[line:87] - INFO: Epoch_36: Eval Accurancy: 0.757
+2023-03-08 09:43:50,547 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:44:35,505 - train.py[line:64] - INFO: [INFO] Epoch_37: Train: Loss: 0.5553, Train Accuracy: 0.7760
+2023-03-08 09:44:41,953 - train.py[line:87] - INFO: Epoch_37: Eval Accurancy: 0.766
+2023-03-08 09:44:41,953 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:45:26,923 - train.py[line:64] - INFO: [INFO] Epoch_38: Train: Loss: 0.6753, Train Accuracy: 0.7759
+2023-03-08 09:45:33,423 - train.py[line:87] - INFO: Epoch_38: Eval Accurancy: 0.731
+2023-03-08 09:46:18,342 - train.py[line:64] - INFO: [INFO] Epoch_39: Train: Loss: 0.5806, Train Accuracy: 0.7807
+2023-03-08 09:46:24,854 - train.py[line:87] - INFO: Epoch_39: Eval Accurancy: 0.414
+2023-03-08 09:47:09,744 - train.py[line:64] - INFO: [INFO] Epoch_40: Train: Loss: 0.4918, Train Accuracy: 0.7801
+2023-03-08 09:47:16,202 - train.py[line:87] - INFO: Epoch_40: Eval Accurancy: 0.763
+2023-03-08 09:48:01,390 - train.py[line:64] - INFO: [INFO] Epoch_41: Train: Loss: 0.6431, Train Accuracy: 0.7836
+2023-03-08 09:48:07,898 - train.py[line:87] - INFO: Epoch_41: Eval Accurancy: 0.763
+2023-03-08 09:48:53,088 - train.py[line:64] - INFO: [INFO] Epoch_42: Train: Loss: 0.4763, Train Accuracy: 0.7883
+2023-03-08 09:48:59,593 - train.py[line:87] - INFO: Epoch_42: Eval Accurancy: 0.749
+2023-03-08 09:49:44,685 - train.py[line:64] - INFO: [INFO] Epoch_43: Train: Loss: 0.4166, Train Accuracy: 0.7868
+2023-03-08 09:49:51,105 - train.py[line:87] - INFO: Epoch_43: Eval Accurancy: 0.773
+2023-03-08 09:49:51,105 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:50:36,264 - train.py[line:64] - INFO: [INFO] Epoch_44: Train: Loss: 0.5202, Train Accuracy: 0.7899
+2023-03-08 09:50:42,727 - train.py[line:87] - INFO: Epoch_44: Eval Accurancy: 0.734
+2023-03-08 09:51:27,708 - train.py[line:64] - INFO: [INFO] Epoch_45: Train: Loss: 0.6116, Train Accuracy: 0.7929
+2023-03-08 09:51:34,192 - train.py[line:87] - INFO: Epoch_45: Eval Accurancy: 0.604
+2023-03-08 09:52:19,118 - train.py[line:64] - INFO: [INFO] Epoch_46: Train: Loss: 0.5657, Train Accuracy: 0.7931
+2023-03-08 09:52:25,555 - train.py[line:87] - INFO: Epoch_46: Eval Accurancy: 0.783
+2023-03-08 09:52:25,555 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:53:10,185 - train.py[line:64] - INFO: [INFO] Epoch_47: Train: Loss: 0.4306, Train Accuracy: 0.7975
+2023-03-08 09:53:16,541 - train.py[line:87] - INFO: Epoch_47: Eval Accurancy: 0.668
+2023-03-08 09:54:01,023 - train.py[line:64] - INFO: [INFO] Epoch_48: Train: Loss: 0.5970, Train Accuracy: 0.7988
+2023-03-08 09:54:07,392 - train.py[line:87] - INFO: Epoch_48: Eval Accurancy: 0.707
+2023-03-08 09:54:52,147 - train.py[line:64] - INFO: [INFO] Epoch_49: Train: Loss: 0.4987, Train Accuracy: 0.7986
+2023-03-08 09:54:58,673 - train.py[line:87] - INFO: Epoch_49: Eval Accurancy: 0.713
+2023-03-08 09:55:43,690 - train.py[line:64] - INFO: [INFO] Epoch_50: Train: Loss: 0.4943, Train Accuracy: 0.8042
+2023-03-08 09:55:50,200 - train.py[line:87] - INFO: Epoch_50: Eval Accurancy: 0.764
+2023-03-08 09:56:35,368 - train.py[line:64] - INFO: [INFO] Epoch_51: Train: Loss: 0.4977, Train Accuracy: 0.8029
+2023-03-08 09:56:41,905 - train.py[line:87] - INFO: Epoch_51: Eval Accurancy: 0.781
+2023-03-08 09:57:26,904 - train.py[line:64] - INFO: [INFO] Epoch_52: Train: Loss: 0.5312, Train Accuracy: 0.8033
+2023-03-08 09:57:33,449 - train.py[line:87] - INFO: Epoch_52: Eval Accurancy: 0.782
+2023-03-08 09:58:18,404 - train.py[line:64] - INFO: [INFO] Epoch_53: Train: Loss: 0.5482, Train Accuracy: 0.8029
+2023-03-08 09:58:24,827 - train.py[line:87] - INFO: Epoch_53: Eval Accurancy: 0.793
+2023-03-08 09:58:24,827 - train.py[line:94] - INFO: Saving model...
+2023-03-08 09:59:09,786 - train.py[line:64] - INFO: [INFO] Epoch_54: Train: Loss: 0.4988, Train Accuracy: 0.8077
+2023-03-08 09:59:16,230 - train.py[line:87] - INFO: Epoch_54: Eval Accurancy: 0.795
+2023-03-08 09:59:16,231 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:00:01,190 - train.py[line:64] - INFO: [INFO] Epoch_55: Train: Loss: 0.5641, Train Accuracy: 0.8063
+2023-03-08 10:00:07,726 - train.py[line:87] - INFO: Epoch_55: Eval Accurancy: 0.766
+2023-03-08 10:00:52,635 - train.py[line:64] - INFO: [INFO] Epoch_56: Train: Loss: 0.4198, Train Accuracy: 0.8126
+2023-03-08 10:00:59,229 - train.py[line:87] - INFO: Epoch_56: Eval Accurancy: 0.788
+2023-03-08 10:01:44,330 - train.py[line:64] - INFO: [INFO] Epoch_57: Train: Loss: 0.4076, Train Accuracy: 0.8117
+2023-03-08 10:01:50,808 - train.py[line:87] - INFO: Epoch_57: Eval Accurancy: 0.596
+2023-03-08 10:02:35,808 - train.py[line:64] - INFO: [INFO] Epoch_58: Train: Loss: 0.5460, Train Accuracy: 0.8137
+2023-03-08 10:02:42,223 - train.py[line:87] - INFO: Epoch_58: Eval Accurancy: 0.706
+2023-03-08 10:03:27,166 - train.py[line:64] - INFO: [INFO] Epoch_59: Train: Loss: 0.4901, Train Accuracy: 0.8171
+2023-03-08 10:03:33,731 - train.py[line:87] - INFO: Epoch_59: Eval Accurancy: 0.803
+2023-03-08 10:03:33,732 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:04:18,818 - train.py[line:64] - INFO: [INFO] Epoch_60: Train: Loss: 0.4586, Train Accuracy: 0.8157
+2023-03-08 10:04:25,325 - train.py[line:87] - INFO: Epoch_60: Eval Accurancy: 0.802
+2023-03-08 10:05:10,408 - train.py[line:64] - INFO: [INFO] Epoch_61: Train: Loss: 0.5576, Train Accuracy: 0.8180
+2023-03-08 10:05:16,892 - train.py[line:87] - INFO: Epoch_61: Eval Accurancy: 0.797
+2023-03-08 10:06:01,962 - train.py[line:64] - INFO: [INFO] Epoch_62: Train: Loss: 0.5197, Train Accuracy: 0.8178
+2023-03-08 10:06:08,604 - train.py[line:87] - INFO: Epoch_62: Eval Accurancy: 0.804
+2023-03-08 10:06:08,604 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:06:53,867 - train.py[line:64] - INFO: [INFO] Epoch_63: Train: Loss: 0.4033, Train Accuracy: 0.8185
+2023-03-08 10:07:00,406 - train.py[line:87] - INFO: Epoch_63: Eval Accurancy: 0.809
+2023-03-08 10:07:00,406 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:07:45,579 - train.py[line:64] - INFO: [INFO] Epoch_64: Train: Loss: 0.4321, Train Accuracy: 0.8214
+2023-03-08 10:07:52,084 - train.py[line:87] - INFO: Epoch_64: Eval Accurancy: 0.810
+2023-03-08 10:07:52,084 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:08:37,311 - train.py[line:64] - INFO: [INFO] Epoch_65: Train: Loss: 0.4804, Train Accuracy: 0.8221
+2023-03-08 10:08:43,857 - train.py[line:87] - INFO: Epoch_65: Eval Accurancy: 0.800
+2023-03-08 10:09:29,075 - train.py[line:64] - INFO: [INFO] Epoch_66: Train: Loss: 0.5252, Train Accuracy: 0.8223
+2023-03-08 10:09:35,574 - train.py[line:87] - INFO: Epoch_66: Eval Accurancy: 0.810
+2023-03-08 10:09:35,574 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:10:20,619 - train.py[line:64] - INFO: [INFO] Epoch_67: Train: Loss: 0.3020, Train Accuracy: 0.8250
+2023-03-08 10:10:27,140 - train.py[line:87] - INFO: Epoch_67: Eval Accurancy: 0.817
+2023-03-08 10:10:27,141 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:11:12,361 - train.py[line:64] - INFO: [INFO] Epoch_68: Train: Loss: 0.5247, Train Accuracy: 0.8258
+2023-03-08 10:11:18,845 - train.py[line:87] - INFO: Epoch_68: Eval Accurancy: 0.819
+2023-03-08 10:11:18,846 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:12:04,156 - train.py[line:64] - INFO: [INFO] Epoch_69: Train: Loss: 0.3744, Train Accuracy: 0.8274
+2023-03-08 10:12:11,041 - train.py[line:87] - INFO: Epoch_69: Eval Accurancy: 0.816
+2023-03-08 10:12:57,564 - train.py[line:64] - INFO: [INFO] Epoch_70: Train: Loss: 0.4921, Train Accuracy: 0.8270
+2023-03-08 10:13:04,358 - train.py[line:87] - INFO: Epoch_70: Eval Accurancy: 0.710
+2023-03-08 10:13:51,515 - train.py[line:64] - INFO: [INFO] Epoch_71: Train: Loss: 0.4034, Train Accuracy: 0.8290
+2023-03-08 10:13:58,742 - train.py[line:87] - INFO: Epoch_71: Eval Accurancy: 0.824
+2023-03-08 10:13:58,742 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:14:46,465 - train.py[line:64] - INFO: [INFO] Epoch_72: Train: Loss: 0.4918, Train Accuracy: 0.8284
+2023-03-08 10:14:54,012 - train.py[line:87] - INFO: Epoch_72: Eval Accurancy: 0.786
+2023-03-08 10:15:41,225 - train.py[line:64] - INFO: [INFO] Epoch_73: Train: Loss: 0.4161, Train Accuracy: 0.8305
+2023-03-08 10:15:48,410 - train.py[line:87] - INFO: Epoch_73: Eval Accurancy: 0.818
+2023-03-08 10:16:34,636 - train.py[line:64] - INFO: [INFO] Epoch_74: Train: Loss: 0.4397, Train Accuracy: 0.8290
+2023-03-08 10:16:41,458 - train.py[line:87] - INFO: Epoch_74: Eval Accurancy: 0.810
+2023-03-08 10:17:28,970 - train.py[line:64] - INFO: [INFO] Epoch_75: Train: Loss: 0.4360, Train Accuracy: 0.8305
+2023-03-08 10:17:35,902 - train.py[line:87] - INFO: Epoch_75: Eval Accurancy: 0.819
+2023-03-08 10:18:23,214 - train.py[line:64] - INFO: [INFO] Epoch_76: Train: Loss: 0.4161, Train Accuracy: 0.8341
+2023-03-08 10:18:30,217 - train.py[line:87] - INFO: Epoch_76: Eval Accurancy: 0.827
+2023-03-08 10:18:30,218 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:19:16,655 - train.py[line:64] - INFO: [INFO] Epoch_77: Train: Loss: 0.4438, Train Accuracy: 0.8336
+2023-03-08 10:19:23,464 - train.py[line:87] - INFO: Epoch_77: Eval Accurancy: 0.825
+2023-03-08 10:20:09,856 - train.py[line:64] - INFO: [INFO] Epoch_78: Train: Loss: 0.3848, Train Accuracy: 0.8321
+2023-03-08 10:20:16,920 - train.py[line:87] - INFO: Epoch_78: Eval Accurancy: 0.816
+2023-03-08 10:21:03,673 - train.py[line:64] - INFO: [INFO] Epoch_79: Train: Loss: 0.3972, Train Accuracy: 0.8356
+2023-03-08 10:21:10,564 - train.py[line:87] - INFO: Epoch_79: Eval Accurancy: 0.829
+2023-03-08 10:21:10,564 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:21:56,805 - train.py[line:64] - INFO: [INFO] Epoch_80: Train: Loss: 0.3038, Train Accuracy: 0.8363
+2023-03-08 10:22:03,696 - train.py[line:87] - INFO: Epoch_80: Eval Accurancy: 0.826
+2023-03-08 10:22:50,904 - train.py[line:64] - INFO: [INFO] Epoch_81: Train: Loss: 0.3621, Train Accuracy: 0.8348
+2023-03-08 10:22:57,933 - train.py[line:87] - INFO: Epoch_81: Eval Accurancy: 0.826
+2023-03-08 10:23:44,488 - train.py[line:64] - INFO: [INFO] Epoch_82: Train: Loss: 0.4308, Train Accuracy: 0.8374
+2023-03-08 10:23:51,455 - train.py[line:87] - INFO: Epoch_82: Eval Accurancy: 0.825
+2023-03-08 10:24:38,857 - train.py[line:64] - INFO: [INFO] Epoch_83: Train: Loss: 0.3693, Train Accuracy: 0.8379
+2023-03-08 10:24:45,951 - train.py[line:87] - INFO: Epoch_83: Eval Accurancy: 0.828
+2023-03-08 10:25:33,229 - train.py[line:64] - INFO: [INFO] Epoch_84: Train: Loss: 0.3672, Train Accuracy: 0.8375
+2023-03-08 10:25:40,215 - train.py[line:87] - INFO: Epoch_84: Eval Accurancy: 0.827
+2023-03-08 10:26:27,068 - train.py[line:64] - INFO: [INFO] Epoch_85: Train: Loss: 0.4125, Train Accuracy: 0.8399
+2023-03-08 10:26:34,073 - train.py[line:87] - INFO: Epoch_85: Eval Accurancy: 0.830
+2023-03-08 10:26:34,073 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:27:21,059 - train.py[line:64] - INFO: [INFO] Epoch_86: Train: Loss: 0.3229, Train Accuracy: 0.8397
+2023-03-08 10:27:27,943 - train.py[line:87] - INFO: Epoch_86: Eval Accurancy: 0.835
+2023-03-08 10:27:27,943 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:28:14,469 - train.py[line:64] - INFO: [INFO] Epoch_87: Train: Loss: 0.3981, Train Accuracy: 0.8400
+2023-03-08 10:28:21,491 - train.py[line:87] - INFO: Epoch_87: Eval Accurancy: 0.832
+2023-03-08 10:29:07,444 - train.py[line:64] - INFO: [INFO] Epoch_88: Train: Loss: 0.4193, Train Accuracy: 0.8396
+2023-03-08 10:29:14,569 - train.py[line:87] - INFO: Epoch_88: Eval Accurancy: 0.835
+2023-03-08 10:30:02,466 - train.py[line:64] - INFO: [INFO] Epoch_89: Train: Loss: 0.5206, Train Accuracy: 0.8395
+2023-03-08 10:30:09,760 - train.py[line:87] - INFO: Epoch_89: Eval Accurancy: 0.833
+2023-03-08 10:30:56,739 - train.py[line:64] - INFO: [INFO] Epoch_90: Train: Loss: 0.4343, Train Accuracy: 0.8389
+2023-03-08 10:31:03,812 - train.py[line:87] - INFO: Epoch_90: Eval Accurancy: 0.830
+2023-03-08 10:31:51,378 - train.py[line:64] - INFO: [INFO] Epoch_91: Train: Loss: 0.4107, Train Accuracy: 0.8408
+2023-03-08 10:31:58,705 - train.py[line:87] - INFO: Epoch_91: Eval Accurancy: 0.828
+2023-03-08 10:32:46,622 - train.py[line:64] - INFO: [INFO] Epoch_92: Train: Loss: 0.3439, Train Accuracy: 0.8394
+2023-03-08 10:32:53,653 - train.py[line:87] - INFO: Epoch_92: Eval Accurancy: 0.838
+2023-03-08 10:32:53,653 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:33:40,270 - train.py[line:64] - INFO: [INFO] Epoch_93: Train: Loss: 0.4572, Train Accuracy: 0.8413
+2023-03-08 10:33:47,363 - train.py[line:87] - INFO: Epoch_93: Eval Accurancy: 0.830
+2023-03-08 10:34:34,943 - train.py[line:64] - INFO: [INFO] Epoch_94: Train: Loss: 0.4880, Train Accuracy: 0.8392
+2023-03-08 10:34:42,140 - train.py[line:87] - INFO: Epoch_94: Eval Accurancy: 0.829
+2023-03-08 10:35:28,986 - train.py[line:64] - INFO: [INFO] Epoch_95: Train: Loss: 0.4435, Train Accuracy: 0.8398
+2023-03-08 10:35:36,255 - train.py[line:87] - INFO: Epoch_95: Eval Accurancy: 0.832
+2023-03-08 10:36:23,266 - train.py[line:64] - INFO: [INFO] Epoch_96: Train: Loss: 0.4256, Train Accuracy: 0.8394
+2023-03-08 10:36:30,500 - train.py[line:87] - INFO: Epoch_96: Eval Accurancy: 0.836
+2023-03-08 10:37:16,922 - train.py[line:64] - INFO: [INFO] Epoch_97: Train: Loss: 0.2860, Train Accuracy: 0.8404
+2023-03-08 10:37:23,845 - train.py[line:87] - INFO: Epoch_97: Eval Accurancy: 0.835
+2023-03-08 10:38:09,696 - train.py[line:64] - INFO: [INFO] Epoch_98: Train: Loss: 0.3639, Train Accuracy: 0.8414
+2023-03-08 10:38:16,356 - train.py[line:87] - INFO: Epoch_98: Eval Accurancy: 0.839
+2023-03-08 10:38:16,356 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:39:01,629 - train.py[line:64] - INFO: [INFO] Epoch_99: Train: Loss: 0.3600, Train Accuracy: 0.8428
+2023-03-08 10:39:08,465 - train.py[line:87] - INFO: Epoch_99: Eval Accurancy: 0.833
+2023-03-08 10:39:56,082 - train.py[line:64] - INFO: [INFO] Epoch_100: Train: Loss: 0.3818, Train Accuracy: 0.8414
+2023-03-08 10:40:03,268 - train.py[line:87] - INFO: Epoch_100: Eval Accurancy: 0.832
+2023-03-08 10:40:50,427 - train.py[line:64] - INFO: [INFO] Epoch_101: Train: Loss: 0.4905, Train Accuracy: 0.8429
+2023-03-08 10:40:57,654 - train.py[line:87] - INFO: Epoch_101: Eval Accurancy: 0.837
+2023-03-08 10:41:44,321 - train.py[line:64] - INFO: [INFO] Epoch_102: Train: Loss: 0.4446, Train Accuracy: 0.8407
+2023-03-08 10:41:51,234 - train.py[line:87] - INFO: Epoch_102: Eval Accurancy: 0.835
+2023-03-08 10:42:37,768 - train.py[line:64] - INFO: [INFO] Epoch_103: Train: Loss: 0.4978, Train Accuracy: 0.8407
+2023-03-08 10:42:44,583 - train.py[line:87] - INFO: Epoch_103: Eval Accurancy: 0.833
+2023-03-08 10:43:29,998 - train.py[line:64] - INFO: [INFO] Epoch_104: Train: Loss: 0.6196, Train Accuracy: 0.8420
+2023-03-08 10:43:36,681 - train.py[line:87] - INFO: Epoch_104: Eval Accurancy: 0.830
+2023-03-08 10:44:23,737 - train.py[line:64] - INFO: [INFO] Epoch_105: Train: Loss: 0.3876, Train Accuracy: 0.8385
+2023-03-08 10:44:30,677 - train.py[line:87] - INFO: Epoch_105: Eval Accurancy: 0.841
+2023-03-08 10:44:30,677 - train.py[line:94] - INFO: Saving model...
+2023-03-08 10:45:17,856 - train.py[line:64] - INFO: [INFO] Epoch_106: Train: Loss: 0.4546, Train Accuracy: 0.8421
+2023-03-08 10:45:24,961 - train.py[line:87] - INFO: Epoch_106: Eval Accurancy: 0.838
+2023-03-08 10:46:11,801 - train.py[line:64] - INFO: [INFO] Epoch_107: Train: Loss: 0.4686, Train Accuracy: 0.8408
+2023-03-08 10:46:18,976 - train.py[line:87] - INFO: Epoch_107: Eval Accurancy: 0.836
+2023-03-08 10:47:05,571 - train.py[line:64] - INFO: [INFO] Epoch_108: Train: Loss: 0.4503, Train Accuracy: 0.8399
+2023-03-08 10:47:12,390 - train.py[line:87] - INFO: Epoch_108: Eval Accurancy: 0.835
+2023-03-08 10:47:59,616 - train.py[line:64] - INFO: [INFO] Epoch_109: Train: Loss: 0.5185, Train Accuracy: 0.8417
+2023-03-08 10:48:06,463 - train.py[line:87] - INFO: Epoch_109: Eval Accurancy: 0.834
+2023-03-08 10:48:53,275 - train.py[line:64] - INFO: [INFO] Epoch_110: Train: Loss: 0.3693, Train Accuracy: 0.8441
+2023-03-08 10:49:00,229 - train.py[line:87] - INFO: Epoch_110: Eval Accurancy: 0.831
+2023-03-08 10:49:46,644 - train.py[line:64] - INFO: [INFO] Epoch_111: Train: Loss: 0.3624, Train Accuracy: 0.8405
+2023-03-08 10:49:53,261 - train.py[line:87] - INFO: Epoch_111: Eval Accurancy: 0.835
+2023-03-08 10:50:39,170 - train.py[line:64] - INFO: [INFO] Epoch_112: Train: Loss: 0.3214, Train Accuracy: 0.8419
+2023-03-08 10:50:45,934 - train.py[line:87] - INFO: Epoch_112: Eval Accurancy: 0.839
+2023-03-08 10:51:31,752 - train.py[line:64] - INFO: [INFO] Epoch_113: Train: Loss: 0.4086, Train Accuracy: 0.8403
+2023-03-08 10:51:38,530 - train.py[line:87] - INFO: Epoch_113: Eval Accurancy: 0.835
+2023-03-08 10:52:24,509 - train.py[line:64] - INFO: [INFO] Epoch_114: Train: Loss: 0.3439, Train Accuracy: 0.8409
+2023-03-08 10:52:31,585 - train.py[line:87] - INFO: Epoch_114: Eval Accurancy: 0.833
+2023-03-08 10:53:18,973 - train.py[line:64] - INFO: [INFO] Epoch_115: Train: Loss: 0.3501, Train Accuracy: 0.8389
+2023-03-08 10:53:25,953 - train.py[line:87] - INFO: Epoch_115: Eval Accurancy: 0.829
+2023-03-08 10:54:13,473 - train.py[line:64] - INFO: [INFO] Epoch_116: Train: Loss: 0.4060, Train Accuracy: 0.8401
+2023-03-08 10:54:20,717 - train.py[line:87] - INFO: Epoch_116: Eval Accurancy: 0.835
+2023-03-08 10:55:08,041 - train.py[line:64] - INFO: [INFO] Epoch_117: Train: Loss: 0.4711, Train Accuracy: 0.8397
+2023-03-08 10:55:14,881 - train.py[line:87] - INFO: Epoch_117: Eval Accurancy: 0.827
+2023-03-08 10:56:02,569 - train.py[line:64] - INFO: [INFO] Epoch_118: Train: Loss: 0.3318, Train Accuracy: 0.8395
+2023-03-08 10:56:09,842 - train.py[line:87] - INFO: Epoch_118: Eval Accurancy: 0.827
+2023-03-08 10:56:57,521 - train.py[line:64] - INFO: [INFO] Epoch_119: Train: Loss: 0.3877, Train Accuracy: 0.8392
+2023-03-08 10:57:04,459 - train.py[line:87] - INFO: Epoch_119: Eval Accurancy: 0.829
+2023-03-08 10:57:51,728 - train.py[line:64] - INFO: [INFO] Epoch_120: Train: Loss: 0.4022, Train Accuracy: 0.8385
+2023-03-08 10:57:58,639 - train.py[line:87] - INFO: Epoch_120: Eval Accurancy: 0.825
+2023-03-08 10:58:44,865 - train.py[line:64] - INFO: [INFO] Epoch_121: Train: Loss: 0.4190, Train Accuracy: 0.8406
+2023-03-08 10:58:51,742 - train.py[line:87] - INFO: Epoch_121: Eval Accurancy: 0.778
+2023-03-08 10:59:38,747 - train.py[line:64] - INFO: [INFO] Epoch_122: Train: Loss: 0.3416, Train Accuracy: 0.8403
+2023-03-08 10:59:45,850 - train.py[line:87] - INFO: Epoch_122: Eval Accurancy: 0.831
+2023-03-08 11:00:32,800 - train.py[line:64] - INFO: [INFO] Epoch_123: Train: Loss: 0.4659, Train Accuracy: 0.8392
+2023-03-08 11:00:39,833 - train.py[line:87] - INFO: Epoch_123: Eval Accurancy: 0.830
+2023-03-08 11:01:27,050 - train.py[line:64] - INFO: [INFO] Epoch_124: Train: Loss: 0.3753, Train Accuracy: 0.8382
+2023-03-08 11:01:34,217 - train.py[line:87] - INFO: Epoch_124: Eval Accurancy: 0.829
+2023-03-08 11:02:21,660 - train.py[line:64] - INFO: [INFO] Epoch_125: Train: Loss: 0.4132, Train Accuracy: 0.8394
+2023-03-08 11:02:28,987 - train.py[line:87] - INFO: Epoch_125: Eval Accurancy: 0.825
+2023-03-08 11:03:15,992 - train.py[line:64] - INFO: [INFO] Epoch_126: Train: Loss: 0.4470, Train Accuracy: 0.8369
+2023-03-08 11:03:22,988 - train.py[line:87] - INFO: Epoch_126: Eval Accurancy: 0.834
+2023-03-08 11:04:10,171 - train.py[line:64] - INFO: [INFO] Epoch_127: Train: Loss: 0.3424, Train Accuracy: 0.8366
+2023-03-08 11:04:17,017 - train.py[line:87] - INFO: Epoch_127: Eval Accurancy: 0.833
+2023-03-08 11:05:03,269 - train.py[line:64] - INFO: [INFO] Epoch_128: Train: Loss: 0.4255, Train Accuracy: 0.8361
+2023-03-08 11:05:10,198 - train.py[line:87] - INFO: Epoch_128: Eval Accurancy: 0.830
+2023-03-08 11:05:56,879 - train.py[line:64] - INFO: [INFO] Epoch_129: Train: Loss: 0.4995, Train Accuracy: 0.8379
+2023-03-08 11:06:03,686 - train.py[line:87] - INFO: Epoch_129: Eval Accurancy: 0.814
+2023-03-08 11:06:50,230 - train.py[line:64] - INFO: [INFO] Epoch_130: Train: Loss: 0.3771, Train Accuracy: 0.8383
+2023-03-08 11:06:57,060 - train.py[line:87] - INFO: Epoch_130: Eval Accurancy: 0.830
+2023-03-08 11:07:44,616 - train.py[line:64] - INFO: [INFO] Epoch_131: Train: Loss: 0.3897, Train Accuracy: 0.8379
+2023-03-08 11:07:51,659 - train.py[line:87] - INFO: Epoch_131: Eval Accurancy: 0.824
+2023-03-08 11:08:38,725 - train.py[line:64] - INFO: [INFO] Epoch_132: Train: Loss: 0.3786, Train Accuracy: 0.8358
+2023-03-08 11:08:45,905 - train.py[line:87] - INFO: Epoch_132: Eval Accurancy: 0.806
+2023-03-08 11:09:32,738 - train.py[line:64] - INFO: [INFO] Epoch_133: Train: Loss: 0.5086, Train Accuracy: 0.8355
+2023-03-08 11:09:40,038 - train.py[line:87] - INFO: Epoch_133: Eval Accurancy: 0.826
+2023-03-08 11:10:26,946 - train.py[line:64] - INFO: [INFO] Epoch_134: Train: Loss: 0.4402, Train Accuracy: 0.8335
+2023-03-08 11:10:33,867 - train.py[line:87] - INFO: Epoch_134: Eval Accurancy: 0.821
+2023-03-08 11:11:20,590 - train.py[line:64] - INFO: [INFO] Epoch_135: Train: Loss: 0.4627, Train Accuracy: 0.8356
+2023-03-08 11:11:27,599 - train.py[line:87] - INFO: Epoch_135: Eval Accurancy: 0.822
+2023-03-08 11:12:14,915 - train.py[line:64] - INFO: [INFO] Epoch_136: Train: Loss: 0.3883, Train Accuracy: 0.8359
+2023-03-08 11:12:21,952 - train.py[line:87] - INFO: Epoch_136: Eval Accurancy: 0.807
+2023-03-08 11:13:09,164 - train.py[line:64] - INFO: [INFO] Epoch_137: Train: Loss: 0.3378, Train Accuracy: 0.8344
+2023-03-08 11:13:16,199 - train.py[line:87] - INFO: Epoch_137: Eval Accurancy: 0.817
+2023-03-08 11:14:03,113 - train.py[line:64] - INFO: [INFO] Epoch_138: Train: Loss: 0.3851, Train Accuracy: 0.8365
+2023-03-08 11:14:09,872 - train.py[line:87] - INFO: Epoch_138: Eval Accurancy: 0.805
+2023-03-08 11:14:56,574 - train.py[line:64] - INFO: [INFO] Epoch_139: Train: Loss: 0.3955, Train Accuracy: 0.8367
+2023-03-08 11:15:03,425 - train.py[line:87] - INFO: Epoch_139: Eval Accurancy: 0.800
+2023-03-08 11:15:49,866 - train.py[line:64] - INFO: [INFO] Epoch_140: Train: Loss: 0.3755, Train Accuracy: 0.8380
+2023-03-08 11:15:56,693 - train.py[line:87] - INFO: Epoch_140: Eval Accurancy: 0.816
+2023-03-08 11:16:43,031 - train.py[line:64] - INFO: [INFO] Epoch_141: Train: Loss: 0.4345, Train Accuracy: 0.8313
+2023-03-08 11:16:49,876 - train.py[line:87] - INFO: Epoch_141: Eval Accurancy: 0.812
+2023-03-08 11:17:36,549 - train.py[line:64] - INFO: [INFO] Epoch_142: Train: Loss: 0.4295, Train Accuracy: 0.8353
+2023-03-08 11:17:43,213 - train.py[line:87] - INFO: Epoch_142: Eval Accurancy: 0.821
+2023-03-08 11:18:29,909 - train.py[line:64] - INFO: [INFO] Epoch_143: Train: Loss: 0.3941, Train Accuracy: 0.8352
+2023-03-08 11:18:36,943 - train.py[line:87] - INFO: Epoch_143: Eval Accurancy: 0.803
+2023-03-08 11:19:23,780 - train.py[line:64] - INFO: [INFO] Epoch_144: Train: Loss: 0.5601, Train Accuracy: 0.8350
+2023-03-08 11:19:30,535 - train.py[line:87] - INFO: Epoch_144: Eval Accurancy: 0.813
+2023-03-08 11:20:17,651 - train.py[line:64] - INFO: [INFO] Epoch_145: Train: Loss: 0.4231, Train Accuracy: 0.8336
+2023-03-08 11:20:24,619 - train.py[line:87] - INFO: Epoch_145: Eval Accurancy: 0.780
+2023-03-08 11:21:11,321 - train.py[line:64] - INFO: [INFO] Epoch_146: Train: Loss: 0.3383, Train Accuracy: 0.8361
+2023-03-08 11:21:18,286 - train.py[line:87] - INFO: Epoch_146: Eval Accurancy: 0.526
+2023-03-08 11:22:05,655 - train.py[line:64] - INFO: [INFO] Epoch_147: Train: Loss: 0.3986, Train Accuracy: 0.8334
+2023-03-08 11:22:12,544 - train.py[line:87] - INFO: Epoch_147: Eval Accurancy: 0.817
+2023-03-08 11:22:59,101 - train.py[line:64] - INFO: [INFO] Epoch_148: Train: Loss: 0.4577, Train Accuracy: 0.8365
+2023-03-08 11:23:06,047 - train.py[line:87] - INFO: Epoch_148: Eval Accurancy: 0.787
+2023-03-08 11:23:53,912 - train.py[line:64] - INFO: [INFO] Epoch_149: Train: Loss: 0.3136, Train Accuracy: 0.8375
+2023-03-08 11:24:01,027 - train.py[line:87] - INFO: Epoch_149: Eval Accurancy: 0.738
+2023-03-08 11:24:48,574 - train.py[line:64] - INFO: [INFO] Epoch_150: Train: Loss: 0.3148, Train Accuracy: 0.8351
+2023-03-08 11:24:55,738 - train.py[line:87] - INFO: Epoch_150: Eval Accurancy: 0.774
+2023-03-08 11:25:43,281 - train.py[line:64] - INFO: [INFO] Epoch_151: Train: Loss: 0.3098, Train Accuracy: 0.8402
+2023-03-08 11:25:50,529 - train.py[line:87] - INFO: Epoch_151: Eval Accurancy: 0.785
+2023-03-08 11:26:38,235 - train.py[line:64] - INFO: [INFO] Epoch_152: Train: Loss: 0.4351, Train Accuracy: 0.8348
+2023-03-08 11:26:45,581 - train.py[line:87] - INFO: Epoch_152: Eval Accurancy: 0.795
+2023-03-08 11:27:33,170 - train.py[line:64] - INFO: [INFO] Epoch_153: Train: Loss: 0.4222, Train Accuracy: 0.8377
+2023-03-08 11:27:40,061 - train.py[line:87] - INFO: Epoch_153: Eval Accurancy: 0.792
+2023-03-08 11:28:27,163 - train.py[line:64] - INFO: [INFO] Epoch_154: Train: Loss: 0.4887, Train Accuracy: 0.8378
+2023-03-08 11:28:34,246 - train.py[line:87] - INFO: Epoch_154: Eval Accurancy: 0.727
+2023-03-08 11:29:21,581 - train.py[line:64] - INFO: [INFO] Epoch_155: Train: Loss: 0.3949, Train Accuracy: 0.8378
+2023-03-08 11:29:28,926 - train.py[line:87] - INFO: Epoch_155: Eval Accurancy: 0.817
+2023-03-08 11:30:16,308 - train.py[line:64] - INFO: [INFO] Epoch_156: Train: Loss: 0.4027, Train Accuracy: 0.8397
+2023-03-08 11:30:23,457 - train.py[line:87] - INFO: Epoch_156: Eval Accurancy: 0.668
+2023-03-08 11:31:10,623 - train.py[line:64] - INFO: [INFO] Epoch_157: Train: Loss: 0.5444, Train Accuracy: 0.8422
+2023-03-08 11:31:17,877 - train.py[line:87] - INFO: Epoch_157: Eval Accurancy: 0.801
+2023-03-08 11:32:05,574 - train.py[line:64] - INFO: [INFO] Epoch_158: Train: Loss: 0.6021, Train Accuracy: 0.8369
+2023-03-08 11:32:12,775 - train.py[line:87] - INFO: Epoch_158: Eval Accurancy: 0.791
+2023-03-08 11:33:00,683 - train.py[line:64] - INFO: [INFO] Epoch_159: Train: Loss: 0.3840, Train Accuracy: 0.8388
+2023-03-08 11:33:08,133 - train.py[line:87] - INFO: Epoch_159: Eval Accurancy: 0.783
+2023-03-08 11:33:55,949 - train.py[line:64] - INFO: [INFO] Epoch_160: Train: Loss: 0.4503, Train Accuracy: 0.8387
+2023-03-08 11:34:03,037 - train.py[line:87] - INFO: Epoch_160: Eval Accurancy: 0.703
+2023-03-08 11:34:49,056 - train.py[line:64] - INFO: [INFO] Epoch_161: Train: Loss: 0.4731, Train Accuracy: 0.8418
+2023-03-08 11:34:55,665 - train.py[line:87] - INFO: Epoch_161: Eval Accurancy: 0.816
+2023-03-08 11:35:41,381 - train.py[line:64] - INFO: [INFO] Epoch_162: Train: Loss: 0.4188, Train Accuracy: 0.8421
+2023-03-08 11:35:47,796 - train.py[line:87] - INFO: Epoch_162: Eval Accurancy: 0.759
+2023-03-08 11:36:33,441 - train.py[line:64] - INFO: [INFO] Epoch_163: Train: Loss: 0.3836, Train Accuracy: 0.8404
+2023-03-08 11:36:39,998 - train.py[line:87] - INFO: Epoch_163: Eval Accurancy: 0.776
+2023-03-08 11:37:25,922 - train.py[line:64] - INFO: [INFO] Epoch_164: Train: Loss: 0.4193, Train Accuracy: 0.8442
+2023-03-08 11:37:32,574 - train.py[line:87] - INFO: Epoch_164: Eval Accurancy: 0.792
+2023-03-08 11:38:18,641 - train.py[line:64] - INFO: [INFO] Epoch_165: Train: Loss: 0.3804, Train Accuracy: 0.8418
+2023-03-08 11:38:25,270 - train.py[line:87] - INFO: Epoch_165: Eval Accurancy: 0.468
+2023-03-08 11:39:11,595 - train.py[line:64] - INFO: [INFO] Epoch_166: Train: Loss: 0.3622, Train Accuracy: 0.8451
+2023-03-08 11:39:18,486 - train.py[line:87] - INFO: Epoch_166: Eval Accurancy: 0.802
+2023-03-08 11:40:04,133 - train.py[line:64] - INFO: [INFO] Epoch_167: Train: Loss: 0.3156, Train Accuracy: 0.8401
+2023-03-08 11:40:10,828 - train.py[line:87] - INFO: Epoch_167: Eval Accurancy: 0.404
+2023-03-08 11:40:57,008 - train.py[line:64] - INFO: [INFO] Epoch_168: Train: Loss: 0.3741, Train Accuracy: 0.8423
+2023-03-08 11:41:03,616 - train.py[line:87] - INFO: Epoch_168: Eval Accurancy: 0.760
+2023-03-08 11:41:49,837 - train.py[line:64] - INFO: [INFO] Epoch_169: Train: Loss: 0.2805, Train Accuracy: 0.8442
+2023-03-08 11:41:56,773 - train.py[line:87] - INFO: Epoch_169: Eval Accurancy: 0.753
+2023-03-08 11:42:43,078 - train.py[line:64] - INFO: [INFO] Epoch_170: Train: Loss: 0.5199, Train Accuracy: 0.8428
+2023-03-08 11:42:49,878 - train.py[line:87] - INFO: Epoch_170: Eval Accurancy: 0.794
+2023-03-08 11:43:36,510 - train.py[line:64] - INFO: [INFO] Epoch_171: Train: Loss: 0.4143, Train Accuracy: 0.8453
+2023-03-08 11:43:43,461 - train.py[line:87] - INFO: Epoch_171: Eval Accurancy: 0.809
+2023-03-08 11:44:29,736 - train.py[line:64] - INFO: [INFO] Epoch_172: Train: Loss: 0.4233, Train Accuracy: 0.8480
+2023-03-08 11:44:36,586 - train.py[line:87] - INFO: Epoch_172: Eval Accurancy: 0.591
+2023-03-08 11:45:22,418 - train.py[line:64] - INFO: [INFO] Epoch_173: Train: Loss: 0.3161, Train Accuracy: 0.8481
+2023-03-08 11:45:29,124 - train.py[line:87] - INFO: Epoch_173: Eval Accurancy: 0.794
+2023-03-08 11:46:14,857 - train.py[line:64] - INFO: [INFO] Epoch_174: Train: Loss: 0.4679, Train Accuracy: 0.8479
+2023-03-08 11:46:21,373 - train.py[line:87] - INFO: Epoch_174: Eval Accurancy: 0.762
+2023-03-08 11:47:07,206 - train.py[line:64] - INFO: [INFO] Epoch_175: Train: Loss: 0.4169, Train Accuracy: 0.8479
+2023-03-08 11:47:14,126 - train.py[line:87] - INFO: Epoch_175: Eval Accurancy: 0.607
+2023-03-08 11:47:59,758 - train.py[line:64] - INFO: [INFO] Epoch_176: Train: Loss: 0.4367, Train Accuracy: 0.8468
+2023-03-08 11:48:06,209 - train.py[line:87] - INFO: Epoch_176: Eval Accurancy: 0.825
+2023-03-08 11:48:51,168 - train.py[line:64] - INFO: [INFO] Epoch_177: Train: Loss: 0.5169, Train Accuracy: 0.8475
+2023-03-08 11:48:57,785 - train.py[line:87] - INFO: Epoch_177: Eval Accurancy: 0.758
+2023-03-08 11:49:44,331 - train.py[line:64] - INFO: [INFO] Epoch_178: Train: Loss: 0.3811, Train Accuracy: 0.8478
+2023-03-08 11:49:51,240 - train.py[line:87] - INFO: Epoch_178: Eval Accurancy: 0.826
+2023-03-08 11:50:37,604 - train.py[line:64] - INFO: [INFO] Epoch_179: Train: Loss: 0.4526, Train Accuracy: 0.8524
+2023-03-08 11:50:44,623 - train.py[line:87] - INFO: Epoch_179: Eval Accurancy: 0.793
+2023-03-08 11:51:30,194 - train.py[line:64] - INFO: [INFO] Epoch_180: Train: Loss: 0.3630, Train Accuracy: 0.8503
+2023-03-08 11:51:36,694 - train.py[line:87] - INFO: Epoch_180: Eval Accurancy: 0.807
+2023-03-08 11:52:22,422 - train.py[line:64] - INFO: [INFO] Epoch_181: Train: Loss: 0.3095, Train Accuracy: 0.8530
+2023-03-08 11:52:29,405 - train.py[line:87] - INFO: Epoch_181: Eval Accurancy: 0.838
+2023-03-08 11:53:15,948 - train.py[line:64] - INFO: [INFO] Epoch_182: Train: Loss: 0.3896, Train Accuracy: 0.8532
+2023-03-08 11:53:22,769 - train.py[line:87] - INFO: Epoch_182: Eval Accurancy: 0.641
+2023-03-08 11:54:09,369 - train.py[line:64] - INFO: [INFO] Epoch_183: Train: Loss: 0.4055, Train Accuracy: 0.8560
+2023-03-08 11:54:16,255 - train.py[line:87] - INFO: Epoch_183: Eval Accurancy: 0.638
+2023-03-08 11:55:02,657 - train.py[line:64] - INFO: [INFO] Epoch_184: Train: Loss: 0.3985, Train Accuracy: 0.8549
+2023-03-08 11:55:09,590 - train.py[line:87] - INFO: Epoch_184: Eval Accurancy: 0.500
+2023-03-08 11:55:55,776 - train.py[line:64] - INFO: [INFO] Epoch_185: Train: Loss: 0.3440, Train Accuracy: 0.8562
+2023-03-08 11:56:02,741 - train.py[line:87] - INFO: Epoch_185: Eval Accurancy: 0.801
+2023-03-08 11:56:48,835 - train.py[line:64] - INFO: [INFO] Epoch_186: Train: Loss: 0.3314, Train Accuracy: 0.8589
+2023-03-08 11:56:55,970 - train.py[line:87] - INFO: Epoch_186: Eval Accurancy: 0.699
+2023-03-08 11:57:43,340 - train.py[line:64] - INFO: [INFO] Epoch_187: Train: Loss: 0.3721, Train Accuracy: 0.8564
+2023-03-08 11:57:50,769 - train.py[line:87] - INFO: Epoch_187: Eval Accurancy: 0.811
+2023-03-08 11:58:38,638 - train.py[line:64] - INFO: [INFO] Epoch_188: Train: Loss: 0.3077, Train Accuracy: 0.8578
+2023-03-08 11:58:46,109 - train.py[line:87] - INFO: Epoch_188: Eval Accurancy: 0.793
+2023-03-08 11:59:33,603 - train.py[line:64] - INFO: [INFO] Epoch_189: Train: Loss: 0.4139, Train Accuracy: 0.8620
+2023-03-08 11:59:40,966 - train.py[line:87] - INFO: Epoch_189: Eval Accurancy: 0.809
+2023-03-08 12:00:26,847 - train.py[line:64] - INFO: [INFO] Epoch_190: Train: Loss: 0.3927, Train Accuracy: 0.8600
+2023-03-08 12:00:34,048 - train.py[line:87] - INFO: Epoch_190: Eval Accurancy: 0.824
+2023-03-08 12:01:21,116 - train.py[line:64] - INFO: [INFO] Epoch_191: Train: Loss: 0.4911, Train Accuracy: 0.8592
+2023-03-08 12:01:28,560 - train.py[line:87] - INFO: Epoch_191: Eval Accurancy: 0.826
+2023-03-08 12:02:16,417 - train.py[line:64] - INFO: [INFO] Epoch_192: Train: Loss: 0.4099, Train Accuracy: 0.8648
+2023-03-08 12:02:23,662 - train.py[line:87] - INFO: Epoch_192: Eval Accurancy: 0.694
+2023-03-08 12:03:10,915 - train.py[line:64] - INFO: [INFO] Epoch_193: Train: Loss: 0.2677, Train Accuracy: 0.8628
+2023-03-08 12:03:17,937 - train.py[line:87] - INFO: Epoch_193: Eval Accurancy: 0.821
+2023-03-08 12:04:04,865 - train.py[line:64] - INFO: [INFO] Epoch_194: Train: Loss: 0.3648, Train Accuracy: 0.8632
+2023-03-08 12:04:11,695 - train.py[line:87] - INFO: Epoch_194: Eval Accurancy: 0.825
+2023-03-08 12:04:58,470 - train.py[line:64] - INFO: [INFO] Epoch_195: Train: Loss: 0.3622, Train Accuracy: 0.8624
+2023-03-08 12:05:05,281 - train.py[line:87] - INFO: Epoch_195: Eval Accurancy: 0.828
+2023-03-08 12:05:51,826 - train.py[line:64] - INFO: [INFO] Epoch_196: Train: Loss: 0.3154, Train Accuracy: 0.8632
+2023-03-08 12:05:58,758 - train.py[line:87] - INFO: Epoch_196: Eval Accurancy: 0.840
+2023-03-08 12:06:45,755 - train.py[line:64] - INFO: [INFO] Epoch_197: Train: Loss: 0.3749, Train Accuracy: 0.8649
+2023-03-08 12:06:52,570 - train.py[line:87] - INFO: Epoch_197: Eval Accurancy: 0.838
+2023-03-08 12:07:39,354 - train.py[line:64] - INFO: [INFO] Epoch_198: Train: Loss: 0.4579, Train Accuracy: 0.8667
+2023-03-08 12:07:46,240 - train.py[line:87] - INFO: Epoch_198: Eval Accurancy: 0.824
+2023-03-08 12:08:32,854 - train.py[line:64] - INFO: [INFO] Epoch_199: Train: Loss: 0.3616, Train Accuracy: 0.8702
+2023-03-08 12:08:39,696 - train.py[line:87] - INFO: Epoch_199: Eval Accurancy: 0.825
+2023-03-08 12:09:26,696 - train.py[line:64] - INFO: [INFO] Epoch_200: Train: Loss: 0.3680, Train Accuracy: 0.8691
+2023-03-08 12:09:33,755 - train.py[line:87] - INFO: Epoch_200: Eval Accurancy: 0.735
+2023-03-08 12:09:33,907 - train.py[line:265] - INFO: Finished training
+2023-03-08 12:09:33,907 - train.py[line:266] - INFO: Best Acc: 84.1332%
+2023-03-08 12:09:33,907 - train.py[line:273] - INFO: 02:56:47
+2023-03-08 12:09:33,908 - train.py[line:276] - INFO: -----------------------------------
+2023-03-08 12:09:33,908 - train.py[line:277] - INFO: Begin test
+2023-03-08 12:09:42,254 - train.py[line:121] - INFO: Test Accurancy: 0.740
