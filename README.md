@@ -63,6 +63,41 @@
     └── 训练与评估框架
 ```
 
+## 系统运行环境
+
+* 操作系统: Ubuntu 20.04.3 LTS (Focal Fossa)
+
+## 环境配置
+
+```
+git clone https://github.com/mumuyeye/HaMonitorSentry.git
+cd HaMonitorSentry
+conda env create -f environment.yml
+conda activate sentry
+```
+
+## 系统显示配置
+
+```
+# 创建字体目录（如果尚未存在）
+mkdir -p ~/.local/share/fonts
+
+# 复制字体文件
+cp /root/sentry/HaMonitorSentry/MSYH.TTF ~/.local/share/fonts/
+
+# 更新字体缓存
+fc-cache -fv
+
+# 检查字体是否安装成功
+fc-list | grep "MSYH"
+```
+
+## demo运行
+
+```
+python demo.py
+```
+
 ## 项目成果
 
 通过对比实验验证，本系统在以下方面取得显著成果：
