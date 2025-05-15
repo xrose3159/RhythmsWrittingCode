@@ -47,3 +47,6 @@ ai_model/models/
 *.h5
 *.pkl
 *.pt
+
+# Documentation
+README.md
