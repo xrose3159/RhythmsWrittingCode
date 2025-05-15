@@ -1,0 +1,123 @@
+/* 字体预览页面样式 */
+.font-preview-container {
+  padding: 24px;
+}
+
+/* 页面标题 */
+.preview-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 24px;
+  border-left: 4px solid #1890ff;
+  padding-left: 12px;
+}
+
+/* 预览控制区域 */
+.preview-controls {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.control-row:last-child {
+  margin-bottom: 0;
+}
+
+.control-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.control-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 预览展示区域 */
+.preview-display {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  min-height: 400px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.preview-header h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.preview-content {
+  border: 1px solid #e8e8e8;
+  padding: 20px;
+  border-radius: 4px;
+  min-height: 300px;
+  background-color: #fafafa;
+}
+
+/* 字体详情区域 */
+.font-details {
+  margin-top: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.details-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.details-item {
+  margin-bottom: 12px;
+}
+
+.details-label {
+  font-weight: bold;
+  color: #666;
+  margin-right: 8px;
+}
+
+.details-value {
+  color: #333;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .font-preview-container {
+    padding: 16px;
+  }
+  
+  .control-item {
+    min-width: 100%;
+  }
+  
+  .preview-display {
+    padding: 16px;
+  }
+}
