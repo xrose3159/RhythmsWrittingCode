@@ -6,7 +6,7 @@
 
 ## 🏆 第18届中国大学生计算机设计大赛 人工智能应用-人工智能实践赛 作品
 
-**[🔗 访问我们的项目展示网站](https://github.com/xrose3159/RhythmsWrittingCode)**
+**[🔗 访问我们的项目展示网站](https://xrose3159.github.io/RhythmsWritting/)**
 
 ## 项目背景
 
