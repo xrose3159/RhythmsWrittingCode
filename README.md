@@ -1,12 +1,12 @@
 # 笔韵智枢 — 大数据驱动的智能一体化字体创作引擎
 
 <div align="center">
-  <img src="https://github.com/xrose3159/RhythmsWritting/raw/gh-pages/images/innovation-all.png" alt="笔韵智枢项目概览" width="800"/>
+  <img src="https://github.com/Mango-IM/PenNovaCode/blob/master/images/innovation8.png?raw=true" alt="笔韵智枢项目概览" width="800"/>
 </div>
 
-## 🏆 第18届中国大学生计算机设计大赛 人工智能应用-人工智能实践赛 作品
+## 🏆 第27届中国机器人及人工智能大赛 人工智能创新赛 作品
 
-**[🔗 访问我们的项目展示网站](https://xrose3159.github.io/RhythmsWritting/)**
+**[🔗 访问我们的项目展示网站](https://teminyang.github.io/PenNova/)**
 
 ## 项目背景
 
@@ -20,21 +20,52 @@
 
 ## 核心技术
 
-### 1. 大数据驱动的智能推荐模块
+### 1. 多头编码器驱动的高精度字体生成引擎
 
-- **参考字智能推荐系统**：结合用户交互和AI算法，自动识别和推荐最适合的参考字样式，提升创作效率96%
-- **多级优化策略**：通过参考字形格参考图、文字内容参考图和生成文字三步策略，实现精准字体创作
-- **风格迁移技术**：基于深度学习的风格识别与迁移，实现不同书法风格间的自然转换
-
-### 2. 高精度字体生成引擎
-
-- **双角度监测技术**：从创作过程和结果评估两个维度实现质量控制
-- **高分辨率渲染**：支持超高清字体渲染，保证笔画细节和艺术表现力
-- **特征提取与重建**：精准捕捉书法字体的特征参数，实现风格的精确复刻与创新
+- **局部特征提取**：基于多头编码器结构，精准捕捉字体的局部和全局特征，确保字体细节和结构的高保真提取。
+- **高效解耦与融合**：通过深度特征解耦，将参考字的风格特征与源字体的内容特征有效结合，实现自然的风格迁移。
+- **灵活的风格迁移**：生成器结合内容与风格特征，生成高度一致且精细化的目标字体，确保设计意图的完美还原。
 
 <div align="center">
-  <img src="https://github.com/xrose3159/RhythmsWritting/raw/gh-pages/images/innovation2.png" alt="技术架构" width="600"/>
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation.png?raw=true" alt="技术架构" width="600"/>
 </div>
+
+### 2. 智能参考字优化推荐系统
+
+- **动态参考字优化**：采用基于四角编码的智能推荐算法，动态选择风格特征最优的参考字，有效提升生成的字体一致性。
+- **实时数据库更新**：系统集成OCR识别技术，自动更新参考字库，确保生成过程中参考字的多样性和时效性。
+- **提高生成效果**：通过优化参考字样本的选择，提高目标字体的风格一致性，避免风格不匹配带来的杂糅问题。
+
+<div align="center">
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation2.png?raw=true" alt="技术架构" width="600"/>
+</div>
+
+### 3. 基于深度学习的源字体智能匹配模块
+
+- **深度风格特征提取**：使用改进的ResNet-18网络对源字体进行多层次的风格特征解析，精确提取笔画细节和结构特征。
+- **精准风格匹配**：通过计算参考字与源字体的相似度，智能推荐风格最匹配的源字体，确保生成字体的风格统一性。
+- **风格一致性保证**：通过深度匹配与优化，解决风格杂糅问题，确保生成字体的视觉效果和风格统一性。
+
+<div align="center">
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation3.png?raw=true" alt="技术架构" width="600"/>
+</div>
+
+### 4. 自适应扩散模型驱动的字体风格迁移系统
+
+- **形状自适应生成**：采用形状自适应扩散模型生成参考字的风格，并将其迁移至目标字体，确保字体形状与风格的一致性。
+- **精细化边缘处理**：通过形状自适应VAE解码器对生成字体的边缘进行精细化调整，优化字体轮廓，提升可读性和美学效果。
+- **风格迁移技术**：基于深度学习的风格识别与迁移，实现不同书法风格间的自然转换
+
+<div align="center">
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation4.png?raw=true" alt="技术架构" width="600"/>
+</div>
+
+### 5. 古今字库融合的多样化训练数据集优化方案
+
+- **多类型字体库整合**：结合现代字体库、生僻字库和古书法字库三大数据源，构建具有广泛字体风格和字形的多样化数据集。
+- **数据集优化与分类**：通过数据清洗、标准化处理以及风格分类，优化训练数据集的质量，提升模型的泛化能力。
+- **增强生成性能**：利用丰富的数据集，提升模型处理复杂字形和非标准化字体的能力，增强对特殊字体风格的生成效果。
+
 
 ## 应用场景
 
@@ -107,12 +138,19 @@ python demo.py
 - 支持**16**种不同风格的汉字生成
 - 覆盖**5000+**常用汉字，支持简繁转换
 
+<div style="text-align: center;">解决风格杂糅，优化生成效率。</div>
 <div align="center">
-  <img src="https://github.com/xrose3159/RhythmsWritting/raw/gh-pages/images/innovation5.png" alt="成果展示" width="600"/>
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation5.png?raw=true" alt="成果展示" width="600"/>
 </div>
+
+<div style="text-align: center;">结合三种异构数据集构建丰富字库。</div>                  
+<div align="center">
+  <img src="https://github.com/Mango-IM/PenNova/blob/master/images/innovation6.png?raw=true" alt="成果展示" width="600"/>
+</div>
+
 ## 致谢
 
-感谢所有对本项目提供支持和帮助的老师、同学和机构。特别感谢中国大学生计算机设计大赛组委会提供的展示平台。
+感谢所有对本项目提供支持和帮助的老师、同学和机构。特别感谢中国机器人及人工智能大赛组委会提供的展示平台。
 
 ---
 
